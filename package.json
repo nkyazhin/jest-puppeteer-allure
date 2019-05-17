@@ -1,0 +1,18 @@
+{
+  "name": "jest-puppeteer-allure",
+  "version": "1.0.0",
+  "description": "This package allows you to generate an allure report.",
+  "main": "src/index.js",
+  "keywords": [
+    "report",
+    "allure",
+    "jest",
+    "puppeteer"
+  ],
+  "author": "Nikita Kryazhin <kryzhin94@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "allure-js-commons": "^1.3.2",
+    "strip-ansi": "^5.2.0"
+  }
+}
