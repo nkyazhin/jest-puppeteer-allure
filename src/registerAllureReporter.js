@@ -3,7 +3,6 @@ const stripAnsi = require('strip-ansi');
 const Reporter = require('./Reporter');
 
 function registerAllureReporter() {
-  console.log('2323232323')
   const allure = new Allure();
   const reporter = (global.reporter = new Reporter(allure));
   let asyncFlow = null;
@@ -78,7 +77,7 @@ function registerAllureReporter() {
       addTaskToFlow(async () => {
         logError = [];
         logPageError = [];
-        allure.startCase(spec.description);
+        allure.startCase(spec.fullName);
       });
     },
     specDone: spec => {
