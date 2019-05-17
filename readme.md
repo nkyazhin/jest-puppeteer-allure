@@ -15,7 +15,7 @@ npm install --save-dev jest-pupputeer-allure
 
 ### Usage
 ```
-reporters: ["default", "jest-allure"],
+reporters: ["default", "jest-puppeteer-allure"],
 ```
 ``jest-puppeteer-allure`` reporter dynamically configure "setupTestFrameworkScriptFile" option in Jest configuration.
 **If you have your own setupTestFrameworkScriptFile file**, you need to manually register reporter, for it you need add import:
