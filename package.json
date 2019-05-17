@@ -1,6 +1,6 @@
 {
   "name": "jest-puppeteer-allure",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "This package allows you to generate an allure report.",
   "main": "src/index.js",
   "keywords": [

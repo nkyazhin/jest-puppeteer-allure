@@ -1,6 +1,6 @@
 const Allure = require('allure-js-commons');
 const stripAnsi = require('strip-ansi');
-const Reporter = require('./Reporter');
+const Reporter = require('./reporter');
 
 function registerAllureReporter() {
   const allure = new Allure();
