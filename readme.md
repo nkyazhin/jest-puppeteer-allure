@@ -10,7 +10,7 @@ The following packages must be installed in your project: `jest` and `puppeteer`
 And `page` variable should be global variable.
 ### Installing
 ```
-npm install --save-dev jest-pupputeer-allure
+npm install --save-dev jest-puppeteer-allure
 ```
 
 ### Usage
