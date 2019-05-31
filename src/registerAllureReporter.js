@@ -9,7 +9,7 @@ function registerAllureReporter() {
   let logError = [];
   let logPageError = [];
 
-  const waitAfterEach = async () => {
+  const wait = async () => {
     await asyncFlow;
     asyncFlow = null;
   };
@@ -56,7 +56,8 @@ function registerAllureReporter() {
     await addStatus(spec, screen, failure);
   };
 
-  afterAll(() => waitAfterEach());
+  beforeEach(() => wait());
+  afterAll(() => wait());
 
   jasmine.getEnv().addReporter({
     suiteStarted: suite => {
