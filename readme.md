@@ -1,6 +1,6 @@
 jest-pupputeer-allure
 =========
-[![NPM version](https://img.shields.io/npm/v/jest-puppeteer-allure.svg)](https://www.npmjs.com/package/puppeteer-rq)
+[![NPM version](https://img.shields.io/npm/v/jest-puppeteer-allure.svg)](https://www.npmjs.com/package/jest-puppeteer-allure)
 [![NPM Downloads](https://img.shields.io/npm/dm/jest-puppeteer-allure.svg?style=flat)](https://www.npmjs.org/package/jest-puppeteer-allure)
 
 This package allows you to generate an allure report. The allure report contains screenshots and errors from the browser console if the test fails.
