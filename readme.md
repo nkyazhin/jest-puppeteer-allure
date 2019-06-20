@@ -58,3 +58,5 @@ it('Test', async () => {
   reporter.addAttachment('Screenshot', screenshot, 'image/jpg');
 })
 ```
+
+If you use [jest-image-snapshot](https://github.com/americanexpress/jest-image-snapshot) then diff image attach to test report.

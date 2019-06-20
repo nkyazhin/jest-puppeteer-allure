@@ -1,6 +1,7 @@
 const Allure = require('allure-js-commons');
 const stripAnsi = require('strip-ansi');
 const Reporter = require('./reporter');
+const fs = require('fs');
 
 function registerAllureReporter() {
   const allure = new Allure();
@@ -22,26 +23,36 @@ function registerAllureReporter() {
     }
   };
 
-  const addStatus = async (spec, screen, failure) => {
+  const addStatus = async (spec, failure) => {
     let error;
     if (spec.status === 'pending') {
       error = { message: spec.pendingReason };
+      return error;
     }
     if (spec.status === 'disabled') {
       error = { message: 'This test was disabled' };
+      return error;
     }
     if (failure) {
       error = {
         message: stripAnsi(failure.message),
         stack: stripAnsi(failure.stack),
       };
-      allure.addAttachment('screenshot', screen, 'image/png');
       if (logError.length || logPageError.length) {
         const errorText = `${logError.join('\n')}\n${logPageError.join('\n')}`;
         allure.addAttachment('console error', errorText, 'text/plain');
       }
+      const rx = /See diff for details: (.*)/g;
+      const arrMessage = rx.exec(error.message);
+      if (arrMessage) {
+        const diffImage = fs.readFileSync(arrMessage[1]);
+        allure.addAttachment('diff', diffImage, 'image/png');
+        return error;
+      }
+      const screen = await page.screenshot();
+      allure.addAttachment('screenshot', screen, 'image/png');
     }
-    allure.endCase(spec.status, error);
+    return error;
   };
 
   const asyncSpecDone = async spec => {
@@ -49,11 +60,8 @@ function registerAllureReporter() {
       spec.failedExpectations && spec.failedExpectations.length
         ? spec.failedExpectations[0]
         : undefined;
-    let screen;
-    if (failure) {
-      screen = await page.screenshot();
-    }
-    await addStatus(spec, screen, failure);
+    const error = await addStatus(spec, failure);
+    allure.endCase(spec.status, error);
   };
 
   beforeEach(() => wait());
