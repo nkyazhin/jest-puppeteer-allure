@@ -1,4 +1,4 @@
-jest-pupputeer-allure
+jest-puppeteer-allure
 =========
 [![NPM version](https://img.shields.io/npm/v/jest-puppeteer-allure.svg)](https://www.npmjs.com/package/jest-puppeteer-allure)
 [![NPM Downloads](https://img.shields.io/npm/dm/jest-puppeteer-allure.svg?style=flat)](https://www.npmjs.org/package/jest-puppeteer-allure)
