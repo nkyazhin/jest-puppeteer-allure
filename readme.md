@@ -59,4 +59,6 @@ it('Test', async () => {
 })
 ```
 
-If you use [jest-image-snapshot](https://github.com/americanexpress/jest-image-snapshot) then diff image attach to test report.
+If you use [jest-image-snapshot](https://github.com/americanexpress/jest-image-snapshot) then diff image attach to test report.  
+If you use WebStorm install [Toolbox](https://www.jetbrains.com/toolbox-app/) and open tests from report.
+

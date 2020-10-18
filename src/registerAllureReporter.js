@@ -55,7 +55,23 @@ function registerAllureReporter() {
     return error;
   };
 
+  const addDescription = (spec) => {
+    if (!process.env.PWD) {
+      return;
+    }
+    const projectName = process.env.PWD.split('/').slice(-1)[0];
+    const rx = new RegExp(`(?<=${projectName}\/).*`, 'g');
+    const testPath = rx.exec(spec.testPath);
+    if (testPath && testPath[0]) {
+      const webStormPath = `<a class='link' href='jetbrains://web-storm/navigate/reference?project=${projectName}&path=${testPath[0]}'>Открыть в WebStorm</a>`
+      allure.setDescription(
+        `${testPath[0]}<br><br>${webStormPath}`
+      );
+    }
+  };
+
   const asyncSpecDone = async spec => {
+    addDescription(spec);
     const failure =
       spec.failedExpectations && spec.failedExpectations.length
         ? spec.failedExpectations[0]
