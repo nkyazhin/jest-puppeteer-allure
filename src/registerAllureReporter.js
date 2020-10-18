@@ -59,10 +59,11 @@ function registerAllureReporter() {
     if (!process.env.PWD) {
       return;
     }
-    const projectName = process.env.PWD.split('/').slice(-1)[0];
-    const rx = new RegExp(`(?<=${projectName}\/).*`, 'g');
+    const projectDirName = process.env.PWD.split('/').slice(-1)[0];
+    const rx = new RegExp(`(?<=${projectDirName}\/).*`, 'g');
     const testPath = rx.exec(spec.testPath);
     if (testPath && testPath[0]) {
+      const projectName = process.env.JOB_NAME ? process.env.JOB_NAME.split('/')[0] : projectDirName
       const webStormPath = `<a class='link' href='jetbrains://web-storm/navigate/reference?project=${projectName}&path=${testPath[0]}'>Открыть в WebStorm</a>`
       allure.setDescription(
         `${testPath[0]}<br><br>${webStormPath}`
