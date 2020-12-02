@@ -104,6 +104,9 @@ function registerAllureReporter() {
         logError = [];
         logPageError = [];
         allure.startCase(spec.fullName);
+        if (global.browserName) {
+          allure.getCurrentTest().addParameter('argument', 'browserName', global.browserName);
+        }
       });
     },
     specDone: spec => {

@@ -6,7 +6,7 @@ jest-puppeteer-allure
 This package allows you to generate an allure report. The allure report contains screenshots and errors from the browser console if the test fails.
 ## Getting Started
 ### Prerequisites
-The following packages must be installed in your project: `jest` and `puppeteer`.
+The following packages must be installed in your project: `jest` and `puppeteer` (`playwright`).
 And `page` variable should be global variable.
 ### Installing
 ```
@@ -58,7 +58,5 @@ it('Test', async () => {
   reporter.addAttachment('Screenshot', screenshot, 'image/jpg');
 })
 ```
-
 If you use [jest-image-snapshot](https://github.com/americanexpress/jest-image-snapshot) then diff image attach to test report.  
 If you use WebStorm install [Toolbox](https://www.jetbrains.com/toolbox-app/) and open tests from report.
-
